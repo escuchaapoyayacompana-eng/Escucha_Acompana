@@ -171,6 +171,30 @@ export function initQueSon() {
       </p>
     </div>
 
+    <!-- Video Resumen Accordion -->
+    <div class="fade-in-up" data-delay="8" style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-xl);">
+      <div class="accordion" id="video-accordion-que-son">
+        <div class="accordion__item" data-accordion-item>
+          <button class="accordion__trigger" aria-expanded="false">
+            <div class="accordion__trigger-left">
+              <span class="accordion__step-badge" style="background:var(--color-primary); color:white;">🎥</span>
+              <span class="accordion__trigger-title">Resumen en video</span>
+            </div>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="accordion__panel">
+            <div class="accordion__content" style="padding-bottom: var(--spacing-md);">
+              <div class="hero__video-wrap" style="aspect-ratio: 16 / 9; max-width: 800px; margin-inline: auto; margin-top: var(--spacing-sm);">
+                <iframe src="https://www.youtube.com/embed/wRsHDayxA1c" title="Resumen: ¿Qué son los Primeros Auxilios Emocionales?"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy" style="width:100%; height:100%; border:none; border-radius:var(--radius-lg);"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- CTA: Iniciar actividad -->
     <div class="fade-in-up" style="text-align: center; padding-top: var(--spacing-xl);">
       <button class="button button--primary button--lg" type="button" id="btn-actividad-que-son">
@@ -190,4 +214,33 @@ export function initQueSon() {
       initGameQueSon();
     });
   }
+
+  // Init interactive accordion
+  initAccordion(section);
+}
+
+function initAccordion(root) {
+  const items = root.querySelectorAll("[data-accordion-item]");
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".accordion__trigger");
+    if (!trigger) return;
+
+    trigger.addEventListener("click", () => {
+      const isActive = item.classList.contains("accordion__item--active");
+
+      // Close all
+      items.forEach((i) => {
+        i.classList.remove("accordion__item--active");
+        const btn = i.querySelector(".accordion__trigger");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      });
+
+      // Toggle clicked
+      if (!isActive) {
+        item.classList.add("accordion__item--active");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
 }
