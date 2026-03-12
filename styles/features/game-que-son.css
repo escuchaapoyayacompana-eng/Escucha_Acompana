@@ -1,0 +1,605 @@
+/* ===============================
+   GAME: ¿Qué son? — Actividad Interactiva
+   Drag-and-drop sentences + categorization
+   =============================== */
+
+/* ── Progress bar ── */
+.game-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-progress__track {
+  flex: 1;
+  height: 8px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.game-progress__fill {
+  height: 100%;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-full);
+  transition: width 500ms var(--ease-out-expo);
+}
+
+.game-progress__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ── Part header ── */
+.game-part {
+  animation: gameFadeUp 400ms var(--ease-out-expo) both;
+}
+
+@keyframes gameFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-part__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 6px var(--spacing-lg);
+  background: var(--gradient-accent);
+  color: #fff;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 12px rgba(212,145,74,0.35);
+}
+
+/* Center the badge */
+.game-part > .game-part__badge {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ── Instruction box ── */
+.game-instruction {
+  background: linear-gradient(135deg, rgba(212,145,74,0.10), rgba(212,145,74,0.04));
+  border: 1.5px solid rgba(212,145,74,0.28);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-md);
+}
+
+.game-instruction strong {
+  display: block;
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--spacing-2xs);
+}
+
+/* ── Sentence fill-in area ── */
+.game-sentence-wrap {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl) var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  line-height: 2.4;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  box-shadow: 0 2px 10px rgba(212,145,74,0.08);
+}
+
+.game-sentence-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.game-sentence-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ── Drop zones (inline blanks) ── */
+.drop-zone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  height: 36px;
+  padding: 0 var(--spacing-xs);
+  margin: 0 4px;
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--color-primary-lighter);
+  background: rgba(212,145,74,0.06);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  vertical-align: middle;
+  cursor: default;
+  transition: border-color var(--transition-fast), background var(--transition-fast),
+              box-shadow var(--transition-fast);
+  position: relative;
+  white-space: nowrap;
+}
+
+.drop-zone::before {
+  content: attr(data-placeholder);
+  font-size: var(--font-size-xs);
+  opacity: 0.6;
+}
+
+.drop-zone.drop-zone--hover {
+  border-color: var(--color-primary);
+  background: rgba(212,145,74,0.14);
+  box-shadow: 0 0 0 3px rgba(212,145,74,0.2);
+}
+
+.drop-zone.drop-zone--filled {
+  border-style: solid;
+  border-color: var(--color-primary-lighter);
+  background: rgba(212,145,74,0.1);
+  color: var(--color-text-primary);
+}
+
+.drop-zone.drop-zone--filled::before {
+  content: '';
+}
+
+.drop-zone.drop-zone--correct {
+  border-color: var(--color-success);
+  background: rgba(16,185,129,0.1);
+  color: #065f46;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+}
+
+.drop-zone.drop-zone--incorrect {
+  border-color: var(--color-danger);
+  background: rgba(239,68,68,0.1);
+  color: var(--color-danger);
+  animation: shake 350ms var(--ease-spring);
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* ── Word bank ── */
+.game-word-bank {
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-word-bank-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.game-word-bank-label::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.game-word-bank__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  min-height: 60px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-background-alt);
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--color-border);
+  align-items: center;
+}
+
+/* ── Drag tokens (word chips) ── */
+.drag-token {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px var(--spacing-lg);
+  background: #fff;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.drag-token:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(212,145,74,0.22);
+}
+
+.drag-token:active,
+.drag-token--dragging {
+  cursor: grabbing;
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+
+.drag-token--used {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.drag-token--incorrect-bank {
+  border-color: var(--color-danger-light);
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  cursor: not-allowed;
+}
+
+/* ── Feedback reveal ── */
+.game-feedback {
+  display: none;
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.05));
+  border: 1.5px solid rgba(16,185,129,0.35);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  animation: feedbackReveal 400ms var(--ease-out-expo) both;
+}
+
+.game-feedback--visible {
+  display: block;
+}
+
+@keyframes feedbackReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-feedback__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.game-feedback__text {
+  font-size: var(--font-size-md);
+  color: #064e3b;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Part 3: Categorization ── */
+.game-cat-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.game-cat-panel {
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--color-border);
+  min-height: 200px;
+  padding: var(--spacing-md);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.game-cat-panel--target {
+  background: rgba(212,145,74,0.04);
+}
+
+.game-cat-panel--target.drop-zone--hover {
+  border-color: var(--color-primary);
+  background: rgba(212,145,74,0.1);
+}
+
+.game-cat-panel__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.game-cat-panel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  min-height: 60px;
+}
+
+.game-cat-panel--instruction {
+  background: linear-gradient(135deg, rgba(212,145,74,0.08), rgba(212,145,74,0.03));
+  border-style: solid;
+  border-color: rgba(212,145,74,0.25);
+  display: flex;
+  align-items: center;
+}
+
+.game-cat-panel--instruction p {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── Navigation ── */
+.game-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1.5px solid var(--color-border);
+}
+
+.game-nav__left {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.game-nav__right {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}
+
+/* ── Result / Reflection screen ── */
+.game-result {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  animation: gameFadeUp 500ms var(--ease-out-expo) both;
+}
+
+.game-result__emoji {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  display: block;
+  animation: pop 600ms var(--ease-spring) both;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.game-result__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--spacing-md);
+}
+
+.game-result__reflection {
+  background: linear-gradient(135deg, rgba(212,145,74,0.1), rgba(212,145,74,0.05));
+  border: 1.5px solid rgba(212,145,74,0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+}
+
+.game-result__reflection strong {
+  display: block;
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.game-score {
+  display: inline-flex;
+  gap: var(--spacing-xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.game-score__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.game-score__num {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+}
+
+.game-score__lbl {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — ajustes por tamaño de pantalla
+   Los estilos base (arriba) son para desktop.
+   Aquí reducimos progresivamente.
+   ═══════════════════════════════════════ */
+
+/* Tablets (≤ 900px) */
+@media (max-width: 900px) {
+  .game-sentence-wrap {
+    font-size: var(--font-size-md);
+  }
+}
+
+/* Tablet chico / landscape phones (≤ 768px) */
+@media (max-width: 768px) {
+  .game-cat-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .game-sentence-wrap {
+    font-size: var(--font-size-md);
+    line-height: 2.3;
+  }
+
+  .game-nav {
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Teléfonos (≤ 640px) */
+@media (max-width: 640px) {
+  .game-cat-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .game-cat-panel {
+    min-height: 140px;
+  }
+
+  .game-sentence-wrap {
+    font-size: var(--font-size-sm);
+    line-height: 2.6;
+    padding: var(--spacing-md);
+    word-break: break-word;
+  }
+
+  .game-sentence-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .drop-zone {
+    min-width: 80px;
+    height: 32px;
+    font-size: var(--font-size-sm);
+    margin: 0 2px;
+  }
+
+  .drag-token {
+    font-size: var(--font-size-sm);
+    padding: 6px 10px;
+    touch-action: none;
+  }
+
+  .game-word-bank__chips {
+    gap: var(--spacing-xs);
+  }
+
+  .game-part__badge {
+    font-size: var(--font-size-xs);
+  }
+
+  .game-instruction {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .game-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-xs);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .game-nav__left,
+  .game-nav__right {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .game-nav .button {
+    flex: 1;
+    min-width: 110px;
+    justify-content: center;
+  }
+
+  .game-result {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .game-result__emoji { font-size: 3rem; }
+
+  .game-result__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .game-score {
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .game-score__num {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Teléfonos muy pequeños (≤ 380px) */
+@media (max-width: 380px) {
+  .drop-zone {
+    min-width: 64px;
+    height: 28px;
+    font-size: var(--font-size-xs);
+  }
+
+  .drag-token {
+    font-size: var(--font-size-xs);
+    padding: 4px 8px;
+  }
+
+  .game-result__emoji { font-size: 2.5rem; }
+}
+

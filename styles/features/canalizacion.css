@@ -1,0 +1,37 @@
+/* canalizacion — module-specific */
+
+.canalizacion-situations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.situation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.situation-item:hover {
+  border-color: var(--color-warning);
+  transform: translateX(4px);
+}
+
+.situation-item__icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.situation-item__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}

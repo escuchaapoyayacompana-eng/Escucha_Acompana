@@ -1,0 +1,843 @@
+/* ===============================
+   RESPONSIVE — Mobile First Overrides
+   Breakpoints:
+   - Mobile:  max-width: 640px
+   - Tablet:  max-width: 768px
+   - Desktop: max-width: 1024px
+   =============================== */
+
+/* ─────────────────────────────────
+   ≤ 1024px — Small Desktop / Large Tablet
+   ───────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Container */
+  .container {
+    padding-inline: var(--spacing-md);
+  }
+
+  /* Feature view */
+  .feature-view {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  /* Module content spacing */
+  .module-content {
+    gap: var(--spacing-2xl);
+  }
+
+  /* Module header */
+  .module-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  /* Pillar cards → 2 columns at medium */
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  /* Tips grid */
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Pillar card padding */
+  .pillar-card {
+    padding: var(--spacing-xl);
+  }
+
+  .pillar-card__icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+}
+
+/* ─────────────────────────────────
+   ≤ 768px — Tablet
+   ───────────────────────────────── */
+@media (max-width: 768px) {
+  /* Sidebar → hidden, mobile toggle takes over */
+  .page-content {
+    margin-left: 0;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    padding-top: var(--spacing-xl);
+  }
+
+  .hero__image-wrap {
+    width: 92%;
+    max-width: 500px;
+  }
+
+  .hero__wrapper {
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+  }
+
+  .hero__title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .hero__eyebrow {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero__video-section {
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+  }
+
+  .hero__video-wrap {
+    max-width: 100%;
+  }
+
+  /* Modules section */
+  .modules {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .modules__header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .modules__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  /* Module card */
+  .module-card {
+    padding: var(--spacing-lg);
+  }
+
+  .module-card__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .module-card__title {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Two column → single column */
+  .module-two-col {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  /* Pillars → single column on tablet */
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pillar-card {
+    padding: var(--spacing-lg);
+  }
+
+  .pillar-card__icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .pillar-card__title {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Feature view header */
+  .feature-view__header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  /* Module header */
+  .module-header__title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .module-header__subtitle {
+    font-size: var(--font-size-md);
+  }
+
+  /* Crisis definition → single column */
+  .crisis-definition {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .crisis-definition__visual {
+    padding: var(--spacing-xl);
+  }
+
+  .crisis-definition__title {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Symptom grid */
+  .symptom-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Breathing exercise */
+  .breath-exercise {
+    padding: var(--spacing-xl);
+  }
+
+  .breath-exercise__circle {
+    width: 100px;
+    height: 100px;
+    font-size: var(--font-size-2xl);
+  }
+
+  .breath-exercise__title {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Relaxation steps */
+  .relax-step {
+    padding: var(--spacing-md);
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    padding: var(--spacing-lg);
+  }
+
+  /* Info cards */
+  .info-card {
+    padding: var(--spacing-lg);
+  }
+
+  /* Cards */
+  .card__body {
+    padding: var(--spacing-lg);
+  }
+
+  /* Alert cards */
+  .alert-card {
+    padding: var(--spacing-lg);
+  }
+
+  /* Accordion */
+  .accordion__trigger {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .accordion__content {
+    padding: 0 var(--spacing-lg) var(--spacing-lg);
+    padding-left: calc(var(--spacing-lg) + 36px + var(--spacing-sm));
+  }
+
+  /* Four column → 2 columns */
+  .four-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tips grid */
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer {
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+
+  /* Ubicación map section */
+  .ubicacion__map-section {
+    flex-direction: column;
+  }
+
+  .ubicacion__map-wrap {
+    max-width: 100%;
+  }
+
+  /* Buttons — ensure touch targets */
+  .button {
+    min-height: 44px;
+  }
+
+  .button--hero {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: var(--font-size-md);
+    width: 100%;
+  }
+
+  .button--lg {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: var(--font-size-md);
+  }
+
+  .button--back {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Section text sizes */
+  .section-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-md);
+  }
+
+  /* Disable hover transforms on touch devices */
+  .module-card:hover {
+    transform: none;
+  }
+
+  .pillar-card:hover {
+    transform: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* ─────────────────────────────────
+   ≤ 640px — Mobile
+   ───────────────────────────────── */
+@media (max-width: 640px) {
+  /* Hero mobile */
+  .hero {
+    padding-top: var(--spacing-md);
+  }
+
+  .hero__image-wrap {
+    width: 95%;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero__wrapper {
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm);
+  }
+
+  .hero__title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+    line-height: 1.15;
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .hero__cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+
+  .hero__cta-group .button {
+    width: 100%;
+  }
+
+  .hero__video-section {
+    padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__float-circle {
+    display: none;
+  }
+
+  /* Modules */
+  .modules {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .modules__header {
+    margin-bottom: var(--spacing-lg);
+    padding-inline: var(--spacing-xs);
+  }
+
+  .section-eyebrow {
+    font-size: var(--font-size-xs);
+  }
+
+  .section-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Module cards */
+  .module-card {
+    padding: var(--spacing-md);
+  }
+
+  .module-card__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .module-card__title {
+    font-size: var(--font-size-md);
+  }
+
+  .module-card__desc {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .module-card__link {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Feature view */
+  .feature-view {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .feature-view__header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .module-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .module-header__eyebrow {
+    font-size: var(--font-size-xs);
+  }
+
+  .module-header__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .module-header__subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .module-content {
+    gap: var(--spacing-xl);
+  }
+
+  /* Accordion mobile */
+  .accordion__trigger {
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .accordion__step-badge {
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-size-xs);
+  }
+
+  .accordion__trigger-title {
+    font-size: var(--font-size-md);
+  }
+
+  .accordion__content {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    padding-left: var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .accordion__questions {
+    padding: var(--spacing-sm);
+  }
+
+  .accordion__question {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Cards mobile */
+  .card__body {
+    padding: var(--spacing-md);
+  }
+
+  .card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .card__desc {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Pillar cards */
+  .pillar-card {
+    padding: var(--spacing-md);
+  }
+
+  .pillar-card__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+
+  .pillar-card__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .pillar-card__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Info card */
+  .info-card {
+    padding: var(--spacing-md);
+  }
+
+  /* Alert card */
+  .alert-card {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .alert-card__icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .alert-card__title {
+    font-size: var(--font-size-md);
+  }
+
+  .alert-card__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Highlight box */
+  .highlight-box {
+    padding: var(--spacing-md);
+  }
+
+  .highlight-box__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Crisis definition */
+  .crisis-definition__visual {
+    padding: var(--spacing-lg);
+  }
+
+  .crisis-definition__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .crisis-definition__text {
+    font-size: var(--font-size-sm);
+  }
+
+  .crisis-emotion-tag {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-2xs) var(--spacing-sm);
+  }
+
+  /* Symptom grid → single column */
+  .symptom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .symptom-item {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Breathing exercise */
+  .breath-exercise {
+    padding: var(--spacing-lg);
+  }
+
+  .breath-exercise__circle {
+    width: 80px;
+    height: 80px;
+    font-size: var(--font-size-xl);
+  }
+
+  .breath-exercise__title {
+    font-size: var(--font-size-lg);
+  }
+
+  .breath-steps__item {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Relaxation steps */
+  .relax-step {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .relax-step__num {
+    width: 26px;
+    height: 26px;
+    font-size: var(--font-size-xs);
+  }
+
+  .relax-step__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Important list */
+  .important-list__item {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .important-list__text {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Situation items */
+  .situation-item {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Feature list */
+  .feature-list__item {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .feature-list__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Tips grid */
+  .tip-item {
+    padding: var(--spacing-sm);
+  }
+
+  .tip-item__text {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Buttons mobile */
+  .button {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .button--lg {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .button--back {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .disclaimer__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Four column → single column */
+  .four-col-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer {
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .footer__brand {
+    font-size: var(--font-size-lg);
+  }
+
+  .footer__desc {
+    font-size: var(--font-size-xs);
+  }
+
+  .footer__copy {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Ubicación */
+  .ubicacion__info-text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Container tighter padding on mobile */
+  .container {
+    padding-inline: var(--spacing-sm);
+  }
+
+  /* Principio items */
+  .principio-item {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .principio-item__num {
+    width: 26px;
+    height: 26px;
+    font-size: var(--font-size-xs);
+  }
+
+  .principio-item__text {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Characteristics grid */
+  .characteristics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─────────────────────────────────
+   ≤ 480px — Extra Small Mobile
+   ───────────────────────────────── */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: 1.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .module-header__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Accordion even more compact */
+  .accordion__trigger {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .accordion__trigger-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .accordion__step-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .accordion__content {
+    padding: 0 var(--spacing-sm) var(--spacing-sm);
+    padding-left: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Pillar title */
+  .pillar-card__title {
+    font-size: var(--font-size-md);
+  }
+}
+
+/* ─────────────────────────────────
+   Touch device optimizations
+   ───────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .module-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--color-border);
+  }
+
+  .module-card:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-lighter);
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .pillar-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .button--primary:hover {
+    transform: none;
+  }
+
+  .button--primary:active {
+    transform: scale(0.97);
+  }
+
+  /* Sidebar: no hover expand on touch (but allow when explicitly opened) */
+  .sidebar:not(.sidebar--open):hover {
+    width: var(--sidebar-width-collapsed);
+  }
+
+  .sidebar:not(.sidebar--open):hover .sidebar__link-text,
+  .sidebar:not(.sidebar--open):hover .sidebar__brand-text,
+  .sidebar:not(.sidebar--open):hover .sidebar__footer-text {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+/* ─────────────────────────────────
+   Landscape phone
+   ───────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding-top: var(--spacing-sm);
+  }
+
+  .hero__image-wrap {
+    max-width: 300px;
+  }
+
+  .hero__title {
+    font-size: 1.5rem;
+  }
+
+  .hero__wrapper {
+    padding: var(--spacing-md);
+  }
+
+  .hero__float-circle {
+    display: none;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}

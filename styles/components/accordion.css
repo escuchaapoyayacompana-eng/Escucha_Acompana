@@ -1,0 +1,138 @@
+/* ===============================
+   ACCORDION COMPONENT
+   =============================== */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.accordion__item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.accordion__item--active {
+  border-color: var(--color-primary-lighter);
+  box-shadow: var(--shadow-md);
+}
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  gap: var(--spacing-md);
+}
+
+.accordion__trigger:hover {
+  background: var(--color-surface-hover);
+}
+
+.accordion__trigger-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.accordion__step-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.accordion__item--active .accordion__step-badge {
+  box-shadow: var(--shadow-primary);
+}
+
+.accordion__trigger-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.accordion__chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.accordion__item--active .accordion__chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out-expo);
+}
+
+.accordion__item--active .accordion__panel {
+  max-height: 800px;
+}
+
+.accordion__content {
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+  padding-left: calc(var(--spacing-xl) + 36px + var(--spacing-md));
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.accordion__content p {
+  margin-bottom: var(--spacing-md);
+}
+
+.accordion__content strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.accordion__questions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(var(--color-primary-rgb), 0.04);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.accordion__question {
+  font-size: var(--font-size-md);
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .accordion__trigger {
+    padding: var(--spacing-md);
+  }
+  .accordion__content {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    padding-left: var(--spacing-md);
+  }
+}

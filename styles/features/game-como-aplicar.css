@@ -1,0 +1,282 @@
+/* ===============================
+   GAME: ¿Cómo aplicarlas? — Verdadero o Falso
+   Table-style layout with V/F buttons
+   =============================== */
+
+/* ── Header row ── */
+.tf-table {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--spacing-xl);
+  box-shadow: 0 4px 16px rgba(61,40,18,0.08);
+}
+
+.tf-table__header {
+  display: grid;
+  grid-template-columns: 1fr 180px 1fr;
+  background: var(--gradient-accent);
+  color: #fff;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tf-header__statement,
+.tf-header__vf,
+.tf-header__feedback {
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.tf-header__vf {
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,0.2);
+  border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ── Table rows ── */
+.tf-table__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.tf-row {
+  display: grid;
+  grid-template-columns: 1fr 180px 1fr;
+  align-items: center;
+  border-top: 1.5px solid var(--color-border);
+  transition: background var(--transition-fast);
+  animation: gameFadeUp 350ms var(--ease-out-expo, ease) both;
+}
+
+.tf-row:nth-child(even) {
+  background: rgba(212,145,74,0.04);
+}
+
+.tf-row:first-child {
+  border-top: none;
+}
+
+/* ── Statement ── */
+.tf-row__statement {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  font-style: italic;
+}
+
+/* ── V / F buttons ── */
+.tf-row__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  border-left: 1.5px solid var(--color-border);
+  border-right: 1.5px solid var(--color-border);
+}
+
+.tf-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+  padding: 7px var(--spacing-md);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), background var(--transition-fast),
+              transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tf-btn:hover:not([disabled]) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212,145,74,0.18);
+}
+
+.tf-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.tf-btn--v .tf-btn__icon {
+  background: rgba(16,185,129,0.14);
+  color: #065f46;
+}
+
+.tf-btn--f .tf-btn__icon {
+  background: rgba(239,68,68,0.12);
+  color: var(--color-danger);
+}
+
+.tf-btn--v:hover:not([disabled]) {
+  border-color: var(--color-success);
+  background: rgba(16,185,129,0.06);
+}
+
+.tf-btn--f:hover:not([disabled]) {
+  border-color: var(--color-danger);
+  background: rgba(239,68,68,0.06);
+}
+
+/* ── After answering ── */
+.tf-btn--done {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.tf-btn--correct {
+  border-color: var(--color-success) !important;
+  background: rgba(16,185,129,0.12) !important;
+  opacity: 1 !important;
+  color: #065f46 !important;
+}
+
+.tf-btn--correct .tf-btn__icon {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.tf-btn--incorrect {
+  border-color: var(--color-danger) !important;
+  background: rgba(239,68,68,0.10) !important;
+  opacity: 1 !important;
+  color: var(--color-danger) !important;
+  animation: quizShake 350ms ease both;
+}
+
+.tf-btn--incorrect .tf-btn__icon {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+/* Correct answer revealed after wrong pick */
+.tf-btn--show-correct {
+  border-color: var(--color-success) !important;
+  background: rgba(16,185,129,0.08) !important;
+  opacity: 1 !important;
+  color: #065f46 !important;
+}
+
+.tf-btn--show-correct .tf-btn__icon {
+  background: var(--color-success);
+  color: #fff;
+}
+
+/* ── Feedback column ── */
+.tf-row__feedback {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 300ms ease, transform 300ms ease;
+  font-style: italic;
+}
+
+.tf-row__feedback--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Submit row ── */
+.tf-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.tf-counter {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+/* Tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .tf-table__header {
+    grid-template-columns: 1fr 140px 1fr;
+  }
+
+  .tf-row {
+    grid-template-columns: 1fr 140px 1fr;
+  }
+
+  .tf-row__statement {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Phones (≤ 640px) — stack into cards */
+@media (max-width: 640px) {
+  .tf-table__header {
+    display: none; /* hide header on mobile, labels are on buttons */
+  }
+
+  .tf-row {
+    grid-template-columns: 1fr;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-sm);
+    border: 1.5px solid var(--color-border);
+    border-top: 1.5px solid var(--color-border) !important;
+    overflow: visible;
+    box-shadow: 0 2px 8px rgba(61,40,18,0.06);
+  }
+
+  .tf-row__controls {
+    flex-direction: row;
+    justify-content: center;
+    border-left: none;
+    border-right: none;
+    border-top: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .tf-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .tf-row__feedback {
+    border-top: 1.5px dashed var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .tf-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .tf-table {
+    border: none;
+    box-shadow: none;
+  }
+
+  .tf-table__body {
+    gap: var(--spacing-xs);
+  }
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Escucha, Apoya y Acompaña — Plataforma educativa sobre primeros auxilios emocionales en situaciones de crisis. Aprende a brindar apoyo emocional inmediato." />
+  <meta name="keywords"
+    content="primeros auxilios emocionales, apoyo emocional, crisis, escucha activa, contención emocional" />
+  <title>Escucha, Apoya y Acompaña — Primeros Auxilios Emocionales</title>
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="./styles/base/reset.css" />
+  <link rel="stylesheet" href="./styles/base/variables.css" />
+  <link rel="stylesheet" href="./styles/base/typography.css" />
+  <link rel="stylesheet" href="./styles/base/global.css" />
+
+  <!-- Layout -->
+  <link rel="stylesheet" href="./styles/layout/header.css" />
+  <link rel="stylesheet" href="./styles/layout/footer.css" />
+
+  <!-- Components -->
+  <link rel="stylesheet" href="./styles/components/button.css" />
+  <link rel="stylesheet" href="./styles/components/animation.css" />
+  <link rel="stylesheet" href="./styles/components/card.css" />
+  <link rel="stylesheet" href="./styles/components/accordion.css" />
+  <link rel="stylesheet" href="./styles/components/stepper.css" />
+  <link rel="stylesheet" href="./styles/components/alert-card.css" />
+  <link rel="stylesheet" href="./styles/components/star-rating.css" />
+  <link rel="stylesheet" href="./styles/components/referencias.css" />
+
+  <!-- Features -->
+  <link rel="stylesheet" href="./styles/features/hero.css" />
+  <link rel="stylesheet" href="./styles/features/sections.css" />
+  <link rel="stylesheet" href="./styles/features/feature-view.css" />
+  <link rel="stylesheet" href="./styles/features/que-son.css" />
+  <link rel="stylesheet" href="./styles/features/game-que-son.css" />
+  <link rel="stylesheet" href="./styles/features/game-cuando-aplicar.css" />
+  <link rel="stylesheet" href="./styles/features/game-como-aplicar.css" />
+  <link rel="stylesheet" href="./styles/features/game-que-no-hacer.css" />
+  <link rel="stylesheet" href="./styles/features/cuando-aplicar.css" />
+  <link rel="stylesheet" href="./styles/features/como-aplicar.css" />
+  <link rel="stylesheet" href="./styles/features/que-no-hacer.css" />
+  <link rel="stylesheet" href="./styles/features/game-canalizacion.css" />
+  <link rel="stylesheet" href="./styles/features/canalizacion.css" />
+  <link rel="stylesheet" href="./styles/features/game-autocuidado.css" />
+  <link rel="stylesheet" href="./styles/features/autocuidado.css" />
+  <link rel="stylesheet" href="./styles/features/ubicacion.css" />
+  <link rel="stylesheet" href="./styles/features/video.css" />
+  <link rel="stylesheet" href="./styles/features/evaluacion.css" />
+
+  <!-- Responsive (must be last) -->
+  <link rel="stylesheet" href="./styles/base/responsive.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════
+       SIDEBAR NAVIGATION
+       ═══════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navegación principal">
+    <!-- Brand -->
+    <div class="sidebar__brand">
+      <span class="sidebar__brand-icon" aria-hidden="true">💙</span>
+      <span class="sidebar__brand-text">EAA</span>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="sidebar__nav">
+      <a href="#hero" class="sidebar__link sidebar__link--active" data-nav-link>
+        <span class="sidebar__link-icon" aria-hidden="true">🏠</span>
+        <span class="sidebar__link-text">Inicio</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="queSon">
+        <span class="sidebar__link-icon" aria-hidden="true">💡</span>
+        <span class="sidebar__link-text">¿Qué son?</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="cuandoAplicar">
+        <span class="sidebar__link-icon" aria-hidden="true">🕐</span>
+        <span class="sidebar__link-text">¿Cuándo?</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="comoAplicar">
+        <span class="sidebar__link-icon" aria-hidden="true">📋</span>
+        <span class="sidebar__link-text">¿Cómo?</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="queNoHacer">
+        <span class="sidebar__link-icon" aria-hidden="true">⚠️</span>
+        <span class="sidebar__link-text">Qué no hacer</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="canalizacion">
+        <span class="sidebar__link-icon" aria-hidden="true">🔗</span>
+        <span class="sidebar__link-text">Canalización</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="autocuidado">
+        <span class="sidebar__link-icon" aria-hidden="true">🧘</span>
+        <span class="sidebar__link-text">Autocuidado</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="ubicacion">
+        <span class="sidebar__link-icon" aria-hidden="true">📍</span>
+        <span class="sidebar__link-text">Ubicación</span>
+      </a>
+      <a href="#modulos" class="sidebar__link" data-nav-link data-feature="referencias">
+        <span class="sidebar__link-icon" aria-hidden="true">📚</span>
+        <span class="sidebar__link-text">Referencias</span>
+      </a>
+      <a href="#" class="sidebar__link" id="btn-nav-calificar-mobile"
+        onclick="if(window.innerWidth <= 768) { document.getElementById('sidebar').classList.remove('sidebar--open'); document.getElementById('sidebar-overlay')?.classList.remove('sidebar__overlay--visible'); document.body.style.overflow = ''; }">
+        <span class="sidebar__link-icon" aria-hidden="true">⭐</span>
+        <span class="sidebar__link-text">Califica nuestra página</span>
+      </a>
+    </nav>
+
+    <!-- Footer -->
+    <div class="sidebar__footer">
+      <span class="sidebar__footer-text">© 2026 EAA</span>
+    </div>
+  </aside>
+
+  <!-- Mobile toggle button -->
+  <button class="sidebar__mobile-toggle" id="sidebar-toggle" aria-label="Abrir menú">☰</button>
+  <div class="sidebar__overlay" id="sidebar-overlay"></div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+       ═══════════════════════════════════════ -->
+  <div class="page-content">
+
+    <main>
+
+      <!-- ═══════════════════════════════════════
+           HERO SECTION — Image → CTAs → Video
+           ═══════════════════════════════════════ -->
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+
+        <!-- Decorative floating circles -->
+        <div class="hero__float-circle hero__float-circle--1" aria-hidden="true"></div>
+        <div class="hero__float-circle hero__float-circle--2" aria-hidden="true"></div>
+
+        <!-- 1. Hero Image (portada) -->
+        <div class="hero__image-wrap fade-in-up">
+          <img class="hero__image" src="./assets/images/portada.png"
+            alt="Ilustración: ¡Escucha, Apoya y Acompaña! — Orientaciones pedagógicas para la contención en situación de crisis"
+            loading="eager" />
+        </div>
+
+        <!-- 2. Title + CTAs -->
+        <div class="hero__wrapper">
+          <div class="hero__eyebrow fade-in" data-delay="1">
+            <span>🎓</span>
+            <span>Plataforma Educativa</span>
+          </div>
+
+          <h1 class="hero__title fade-in-up" id="hero-title">
+            Escucha, Apoya<br>
+            y <span class="hero__title-accent">Acompaña</span>
+          </h1>
+
+          <p class="hero__subtitle fade-in-up" data-delay="2">
+            Orientaciones pedagógicas para la contención en situación de crisis.
+            Aprende a brindar apoyo inmediato de forma responsable y empática.
+          </p>
+
+          <div class="hero__cta-group fade-in-up" data-delay="3">
+            <a href="#modulos" class="button button--hero-secondary button--hero" id="btn-explorar">
+              Explorar módulos
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Video embed -->
+        <div class="hero__video-section">
+          <div class="hero__video-wrap fade-in-up" data-delay="4">
+            <iframe src="https://www.youtube.com/embed/EJn9Sj0Id7U"
+              title="Video explicativo sobre primeros auxilios emocionales"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <button class="hero__scroll" id="scroll-indicator" aria-label="Desplazar hacia módulos">
+          <span>Explorar</span>
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+        </button>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           MODULES GRID
+           ═══════════════════════════════════════ -->
+      <section class="modules" id="modulos" aria-labelledby="modules-title">
+        <div class="container">
+
+          <div class="modules__header">
+            <p class="section-eyebrow fade-in-up">Contenido del curso</p>
+            <h2 class="section-title fade-in-up" data-delay="1" id="modules-title">Módulos de aprendizaje</h2>
+            <p class="section-subtitle fade-in-up" data-delay="2" style="margin-inline: auto;">
+              Explora cada módulo para aprender sobre el acompañamiento emocional en crisis.
+            </p>
+          </div>
+
+          <div class="modules__grid">
+
+            <!-- Módulo 1: ¿Qué son? -->
+            <article class="module-card fade-in-up" data-feature="queSon" data-delay="1" tabindex="0" role="button"
+              aria-label="Abrir módulo ¿Qué son?">
+              <div class="module-card__icon module-card__icon--blue" aria-hidden="true">💡</div>
+              <h3 class="module-card__title">¿Qué son?</h3>
+              <p class="module-card__desc">Conoce el objetivo y fundamento de las orientaciones para el apoyo emocional
+                inmediato.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 2: ¿Cuándo aplicarlas? -->
+            <article class="module-card fade-in-up" data-feature="cuandoAplicar" data-delay="2" tabindex="0"
+              role="button" aria-label="Abrir módulo ¿Cuándo aplicarlas?">
+              <div class="module-card__icon module-card__icon--purple" aria-hidden="true">🕐</div>
+              <h3 class="module-card__title">¿Cuándo aplicarlas?</h3>
+              <p class="module-card__desc">Aprende en qué situaciones brindar este apoyo emocional de forma oportuna.
+              </p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 3: ¿Cómo aplicarlas? -->
+            <article class="module-card fade-in-up" data-feature="comoAplicar" data-delay="3" tabindex="0" role="button"
+              aria-label="Abrir módulo ¿Cómo aplicarlas?">
+              <div class="module-card__icon module-card__icon--green" aria-hidden="true">📋</div>
+              <h3 class="module-card__title">¿Cómo aplicarlas?</h3>
+              <p class="module-card__desc">Descubre el proceso paso a paso y los principios de actuación fundamentales.
+              </p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 4: ¿Qué no hacer? -->
+            <article class="module-card fade-in-up" data-feature="queNoHacer" data-delay="4" tabindex="0" role="button"
+              aria-label="Abrir módulo ¿Qué no hacer?">
+              <div class="module-card__icon module-card__icon--red" aria-hidden="true">⚠️</div>
+              <h3 class="module-card__title">¿Qué no hacer?</h3>
+              <p class="module-card__desc">Identifica errores comunes y prácticas que debes evitar al brindar apoyo.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 5: Canalización -->
+            <article class="module-card fade-in-up" data-feature="canalizacion" data-delay="5" tabindex="0"
+              role="button" aria-label="Abrir módulo Canalización">
+              <div class="module-card__icon module-card__icon--amber" aria-hidden="true">🔗</div>
+              <h3 class="module-card__title">Canalización</h3>
+              <p class="module-card__desc">Orientación hacia apoyo especializado cuando la situación lo requiere.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 6: Autocuidado -->
+            <article class="module-card fade-in-up" data-feature="autocuidado" data-delay="6" tabindex="0" role="button"
+              aria-label="Abrir módulo Autocuidado">
+              <div class="module-card__icon module-card__icon--teal" aria-hidden="true">🧘</div>
+              <h3 class="module-card__title">Autocuidado</h3>
+              <p class="module-card__desc">Cuida tu bienestar emocional y físico al brindar apoyo a otros.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Módulo 7: Ubicación -->
+            <article class="module-card fade-in-up" data-feature="ubicacion" data-delay="7" tabindex="0" role="button"
+              aria-label="Abrir módulo Ubicación">
+              <div class="module-card__icon module-card__icon--indigo" aria-hidden="true">📍</div>
+              <h3 class="module-card__title">Ubicación</h3>
+              <p class="module-card__desc">Encuentra centros de apoyo y atención en toda la República Mexicana.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+
+            <!-- Extra Módulo: Referencias -->
+            <article class="module-card fade-in-up" data-feature="referencias" data-delay="8" tabindex="0" role="button"
+              aria-label="Abrir módulo Referencias">
+              <div class="module-card__icon" style="background: rgba(100,116,139,0.1); color: #64748b;" aria-hidden="true">📚</div>
+              <h3 class="module-card__title">Referencias</h3>
+              <p class="module-card__desc">Consulta la bibliografía y fuentes base de este manual.</p>
+              <span class="module-card__link">
+                Explorar módulo <span class="module-card__arrow" aria-hidden="true">→</span>
+              </span>
+            </article>
+          </div>
+
+          <div class="fade-in-up" data-delay="8"
+            style="display: flex; justify-content: center; margin-top: var(--spacing-2xl);">
+            <a href="#" id="btn-nav-calificar-modules" class="button button--primary button--hero">
+              Ayúdanos a calificar nuestra página
+              <span class="button__icon" aria-hidden="true">⭐</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════
+           FEATURE VIEW (Dynamic Content)
+           ═══════════════════════════════════════ -->
+      <section class="feature-view" id="feature-view" hidden aria-label="Contenido del módulo">
+        <div class="container feature-view__content">
+          <div class="feature-view__header">
+            <button class="button button--back" id="back-button" aria-label="Volver a módulos">
+              <span aria-hidden="true">←</span> Volver a módulos
+            </button>
+          </div>
+          <div id="feature-content"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+      <div class="container footer__content">
+        <!-- The global footer rating block was removed as requested -->
+
+        <p class="footer__brand">Escucha, Apoya y Acompaña</p>
+        <p class="footer__desc">
+          Plataforma educativa sobre primeros auxilios emocionales.
+          Orientaciones para brindar apoyo responsable en situaciones de crisis.
+        </p>
+
+        <div class="footer__divider"></div>
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2026 Escucha, Apoya y Acompaña. Todos los derechos reservados.</p>
+          <div class="footer__links">
+            <a href="https://www.cij.org.mx" target="_blank" rel="noopener noreferrer" class="footer__link">CIJ
+              México</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./scripts/main.js"></script>
+
+
+  </div>
+
+  <!-- GAME MODAL: ¿Qué son? -->
+  <div class="game-modal" id="game-que-son-modal" role="dialog" aria-modal="true" aria-labelledby="game-modal-title"
+    hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-modal-title">
+          📝 Actividad interactiva: Construyendo la orientación y el apoyo emocional
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">✕</button>
+      </div>
+      <div class="game-modal__body" id="game-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- GAME MODAL: ¿Cuándo aplicar? -->
+  <div class="game-modal" id="game-cuando-modal" role="dialog" aria-modal="true" aria-labelledby="game-cuando-title"
+    hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-cuando-title">
+          📍 Actividad interactiva: ¿Cuándo aplicar el apoyo emocional?
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">✕</button>
+      </div>
+      <div class="game-modal__body" id="game-cuando-body"></div>
+    </div>
+  </div>
+
+  <!-- GAME MODAL: ¿Cómo aplicarlas? Verdadero o Falso -->
+  <div class="game-modal" id="game-como-modal" role="dialog" aria-modal="true" aria-labelledby="game-como-title" hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-como-title">
+          ✅ Actividad interactiva: Verdadero o Falso
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">✕</button>
+      </div>
+      <div class="game-modal__body" id="game-como-body"></div>
+    </div>
+  </div>
+
+
+  <!-- GAME MODAL: Que no hacer -->
+  <div class="game-modal" id="game-que-no-modal" role="dialog" aria-modal="true" aria-labelledby="game-que-no-title"
+    hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-que-no-title">🚦 Actividad interactiva: ¿Es apoyo en crisis o no?</h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">✕</button>
+      </div>
+      <div class="game-modal__body" id="game-que-no-body"></div>
+    </div>
+  </div>
+
+  <!-- GAME MODAL: Canalizacion - haz clic para descubrir cuando canalizar -->
+  <div class="game-modal" id="game-canalizacion-modal" role="dialog" aria-modal="true"
+    aria-labelledby="game-canalizacion-title" hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-canalizacion-title">
+          Actividad interactiva: Haz clic para descubrir cuando canalizar
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">x</button>
+      </div>
+      <div class="game-modal__body" id="game-canalizacion-body"></div>
+    </div>
+  </div>
+
+  <!-- GAME MODAL: Autocuidado - Que harias para cuidarte -->
+  <div class="game-modal" id="game-autocuidado-modal" role="dialog" aria-modal="true"
+    aria-labelledby="game-autocuidado-title" hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-autocuidado-title">
+          🧘 Actividad interactiva: ¿Qué harías para cuidarte?
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">x</button>
+      </div>
+      <div class="game-modal__body" id="game-autocuidado-body"></div>
+    </div>
+  </div>
+
+  <!-- GAME MODAL: Evaluacion -->
+  <div class="game-modal" id="game-evaluacion-modal" role="dialog" aria-modal="true"
+    aria-labelledby="game-evaluacion-title" hidden>
+    <div class="game-modal__panel">
+      <div class="game-modal__header">
+        <h2 class="game-modal__title" id="game-evaluacion-title">
+          ⭐ Califica nuestra página
+        </h2>
+        <button class="game-modal__close" aria-label="Cerrar actividad">✕</button>
+      </div>
+      <div class="game-modal__body" id="game-evaluacion-body"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+/* ===============================
+   ANIMATIONS
+   =============================== */
+
+/* Fade in up */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade in */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out-expo);
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Scale in */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.5s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide in from left */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide in from right */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delay utility via data-delay attribute */
+[data-delay="1"] {
+  transition-delay: 0.1s;
+}
+[data-delay="2"] {
+  transition-delay: 0.2s;
+}
+[data-delay="3"] {
+  transition-delay: 0.3s;
+}
+[data-delay="4"] {
+  transition-delay: 0.4s;
+}
+[data-delay="5"] {
+  transition-delay: 0.5s;
+}
+[data-delay="6"] {
+  transition-delay: 0.6s;
+}
+[data-delay="7"] {
+  transition-delay: 0.7s;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Bounce indicator */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Content transition for feature view */
+.feature-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.feature-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.4s var(--ease-out-expo),
+    transform 0.4s var(--ease-out-expo);
+}

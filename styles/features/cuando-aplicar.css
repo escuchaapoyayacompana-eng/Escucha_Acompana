@@ -1,0 +1,79 @@
+/* cuando-aplicar — module-specific */
+/* Most styling handled by shared components */
+
+.crisis-definition {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.crisis-definition__visual {
+  padding: var(--spacing-2xl);
+  background: var(--gradient-accent);
+  border-radius: var(--radius-xl);
+  color: white;
+  text-align: center;
+}
+
+.crisis-definition__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+.crisis-definition__text {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  opacity: 0.9;
+}
+
+.crisis-emotions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+  justify-content: center;
+}
+
+.crisis-emotion-tag {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: white;
+}
+
+.important-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.important-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.important-list__icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.important-list__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 768px) {
+  .crisis-definition {
+    grid-template-columns: 1fr;
+  }
+}

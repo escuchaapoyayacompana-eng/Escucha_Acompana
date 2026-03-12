@@ -1,0 +1,266 @@
+/* Features: que-son, cuando-aplicar, como-aplicar — module-specific overrides */
+/* Most styling is handled by shared components (card, accordion, stepper, feature-view) */
+
+/* ── Qué son: Intro Split ── */
+.module-hero-split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  align-items: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+@media (min-width: 768px) {
+  .module-hero-split {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .module-hero-split .module-header {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .module-hero-split .module-hero-image {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.module-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+
+/* ── Qué son: characteristics grid ── */
+.que-son__chars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.char-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.char-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.char-card__icon {
+  font-size: 36px;
+  margin-bottom: var(--spacing-md);
+}
+
+.char-card__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.char-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Factors list ── */
+.factors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.factor-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.factor-tag:hover {
+  border-color: var(--color-primary-lighter);
+  background: rgba(var(--color-primary-rgb), 0.04);
+}
+
+.factor-tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ── Orientación Flowchart ── */
+.orientacion-flow {
+  margin: var(--spacing-2xl) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.orientacion-flow__root {
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.orientacion-flow__root::after {
+  content: "";
+  position: absolute;
+  top: 100%; left: 50%;
+  width: 4px; height: 24px;
+  background-color: #1a1a1a;
+  transform: translateX(-50%);
+  border-radius: 4px;
+}
+
+.orientacion-flow__tag {
+  background: #ffcc33; /* matching image yellow */
+  color: #1a1a1a;
+  padding: 8px 32px;
+  border-radius: 8px;
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+  box-shadow: 2px 4px 0px rgba(0,0,0,0.15);
+}
+
+.orientacion-flow__tag.text-shadow {
+  font-size: var(--font-size-2xl);
+  padding: 12px 48px;
+  transform: rotate(1deg);
+}
+
+.orientacion-flow__branches {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  padding-top: 24px;
+}
+
+/* Horizontal connecting line */
+.orientacion-flow__branches::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  height: 4px;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+/* Branches */
+.orientacion-branch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.orientacion-branch__connector {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 24px;
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+.orientacion-branch__connector--left { right: 50%; left: auto; } /* Align to ends of the horizontal bar */
+.orientacion-branch__connector--right { left: 50%; right: auto; }
+
+.orientacion-branch__header {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.orientacion-branch__header::after {
+  content: "";
+  position: absolute;
+  top: 100%; left: 50%;
+  width: 4px; height: 24px;
+  background-color: #1a1a1a;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.orientacion-branch__box {
+  background-color: #fffafc; /* very light pinkish paper */
+  padding: var(--spacing-xl);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  width: 100%; 
+  max-width: 400px;
+  border: 1px solid rgba(0,0,0,0.05);
+  /* Simulate torn/wavy edges */
+  mask-image: url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 Q5,2 10,0 T20,0 T30,0 T40,0 T50,0 T60,0 T70,0 T80,0 T90,0 T100,0 L100,100 M100,100 Q95,98 90,100 T80,100 T70,100 T60,100 T50,100 T40,100 T30,100 T20,100 T10,100 T0,100 L0,0" fill="black"/></svg>');
+}
+
+/* Remove mask image since it's hard to get right without external SVG, using simple borders */
+.orientacion-branch__box {
+  background-color: #fdf5fc;
+  border: 2px dashed rgba(212,145,74,0.4);
+}
+
+.orientacion-branch__box ul {
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  list-style-type: disc;
+}
+
+@media (max-width: 768px) {
+  .orientacion-flow__branches {
+    flex-direction: column;
+    padding-top: 0;
+  }
+  .orientacion-flow__branches::before,
+  .orientacion-branch__connector,
+  .orientacion-flow__root::after {
+    display: none;
+  }
+  .orientacion-branch__header {
+    margin-top: 0;
+  }
+}

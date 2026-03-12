@@ -1,0 +1,186 @@
+/* ===============================
+   GAME: ¿Qué no hacer? — ¿Es apoyo en crisis o no?
+   A/B click with instant inline feedback per card
+   Reuses: .game-instruction, .game-result, etc.
+   =============================== */
+
+/* ── Cards container ── */
+.cn-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ── Single situation card ── */
+.cn-card {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: 0 6px 24px rgba(212,145,74,0.28);
+  animation: gameFadeUp 400ms var(--ease-out-expo, ease) both;
+}
+
+.cn-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cn-card__num {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-extrabold);
+  color: rgba(255,255,255,0.90);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(0,0,0,0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.cn-card__situation {
+  font-size: var(--font-size-md);
+  color: #fff;
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── Options row ── */
+.cn-card__options {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* ── Option button ── */
+.cn-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 10px var(--spacing-xl);
+  background: rgba(255,255,255,0.18);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+              transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+
+.cn-option:hover:not([disabled]) {
+  background: rgba(255,255,255,0.30);
+  border-color: rgba(255,255,255,0.70);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.cn-option__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: rgba(0,0,0,0.18);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-extrabold);
+  flex-shrink: 0;
+}
+
+/* ── After answering ── */
+.cn-option--done {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.cn-option--correct {
+  background: rgba(16,185,129,0.30) !important;
+  border-color: #6ee7b7 !important;
+  opacity: 1 !important;
+}
+
+.cn-option--correct .cn-option__label {
+  background: var(--color-success);
+}
+
+.cn-option--incorrect {
+  background: rgba(239,68,68,0.30) !important;
+  border-color: #fca5a5 !important;
+  opacity: 1 !important;
+  animation: quizShake 350ms ease both;
+}
+
+.cn-option--incorrect .cn-option__label {
+  background: var(--color-danger);
+}
+
+/* Show correct option when wrong was chosen */
+.cn-option--show-correct {
+  background: rgba(16,185,129,0.22) !important;
+  border-color: #6ee7b7 !important;
+  opacity: 1 !important;
+}
+
+.cn-option--show-correct .cn-option__label {
+  background: var(--color-success);
+}
+
+/* ── Feedback per card ── */
+.cn-feedback {
+  display: none;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.95);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  animation: feedbackReveal 350ms var(--ease-out-expo, ease) both;
+}
+
+.cn-feedback--visible {
+  display: flex;
+}
+
+.cn-feedback__icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.cn-feedback__text {
+  margin: 0;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .cn-card {
+    padding: var(--spacing-lg);
+  }
+
+  .cn-card__situation {
+    font-size: var(--font-size-sm);
+  }
+
+  .cn-card__options {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .cn-option {
+    width: 100%;
+    justify-content: flex-start;
+    white-space: normal;
+  }
+}

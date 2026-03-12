@@ -1,0 +1,123 @@
+/* ===============================
+   STEPPER / TIMELINE COMPONENT
+   =============================== */
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: var(--spacing-2xl);
+}
+
+.stepper::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.stepper__item {
+  position: relative;
+  padding-bottom: var(--spacing-2xl);
+}
+
+.stepper__item:last-child {
+  padding-bottom: 0;
+}
+
+.stepper__dot {
+  position: absolute;
+  left: calc(-1 * var(--spacing-2xl) + 7px);
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+  border: 3px solid var(--color-background);
+  z-index: 1;
+  transition:
+    background var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.stepper__item--active .stepper__dot {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.stepper__item--completed .stepper__dot {
+  background: var(--color-success);
+}
+
+.stepper__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stepper__desc {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Horizontal variant */
+.stepper--horizontal {
+  flex-direction: row;
+  padding-left: 0;
+  justify-content: space-between;
+}
+
+.stepper--horizontal::before {
+  left: 0;
+  right: 0;
+  top: 15px;
+  bottom: auto;
+  width: auto;
+  height: 2px;
+}
+
+.stepper--horizontal .stepper__item {
+  flex: 1;
+  padding-bottom: 0;
+  padding-top: var(--spacing-2xl);
+  text-align: center;
+}
+
+.stepper--horizontal .stepper__dot {
+  left: 50%;
+  top: calc(-1 * var(--spacing-2xl) + 7px);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .stepper--horizontal {
+    flex-direction: column;
+    padding-left: var(--spacing-2xl);
+  }
+
+  .stepper--horizontal::before {
+    left: 15px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: auto;
+  }
+
+  .stepper--horizontal .stepper__item {
+    padding-top: 0;
+    padding-bottom: var(--spacing-2xl);
+    text-align: left;
+  }
+
+  .stepper--horizontal .stepper__dot {
+    left: calc(-1 * var(--spacing-2xl) + 7px);
+    top: 4px;
+    transform: none;
+  }
+}

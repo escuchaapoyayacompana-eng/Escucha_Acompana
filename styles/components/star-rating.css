@@ -1,0 +1,129 @@
+/* ===============================
+   STAR RATING COMPONENT
+   =============================== */
+
+.star-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.star-rating__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.star-rating__stars {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.star-rating__star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0;
+  transition: transform var(--transition-fast);
+  position: relative;
+}
+
+.star-rating__star:hover {
+  transform: scale(1.2);
+}
+
+.star-rating__star:active {
+  transform: scale(0.95);
+}
+
+/* Star SVG Styling */
+.star-rating__star svg {
+  width: 32px;
+  height: 32px;
+  transition: all var(--transition-normal);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+/* Empty star */
+.star-rating__star svg .star-fill {
+  fill: rgba(255, 255, 255, 0.15);
+  transition: fill var(--transition-normal);
+}
+
+.star-rating__star svg .star-stroke {
+  fill: rgba(255, 255, 255, 0.3);
+  transition: fill var(--transition-normal);
+}
+
+/* Hovered star (preview) */
+.star-rating__star--hover svg .star-fill {
+  fill: #fbbf24;
+}
+
+.star-rating__star--hover svg .star-stroke {
+  fill: #f59e0b;
+}
+
+.star-rating__star--hover svg {
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.5));
+}
+
+/* Selected star */
+.star-rating__star--active svg .star-fill {
+  fill: #fbbf24;
+}
+
+.star-rating__star--active svg .star-stroke {
+  fill: #f59e0b;
+}
+
+.star-rating__star--active svg {
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.4));
+}
+
+/* Feedback message */
+.star-rating__feedback {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-light);
+  font-weight: var(--font-weight-medium);
+  min-height: 1.5em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.star-rating__feedback--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Success animation after rating */
+@keyframes starPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.star-rating__star--pulse {
+  animation: starPulse 0.4s var(--ease-spring);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .star-rating__star svg {
+    width: 28px;
+    height: 28px;
+  }
+}
