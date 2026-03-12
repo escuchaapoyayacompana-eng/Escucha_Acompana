@@ -245,24 +245,29 @@
   }
 
   .tf-row__controls {
-    flex-direction: row;
-    justify-content: center;
+    display: flex !important;
+    flex-direction: column !important; /* Force stack */
+    align-items: stretch !important;
     border-left: none;
     border-right: none;
     border-top: 1.5px solid var(--color-border);
     border-bottom: 1.5px solid var(--color-border);
     padding: var(--spacing-md);
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
   .tf-btn {
-    flex: 1;
+    width: 100% !important;
     justify-content: center;
+    padding: 10px var(--spacing-md);
   }
 
   .tf-row__feedback {
     border-top: 1.5px dashed var(--color-border);
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+    background: rgba(255,255,255,0.4);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 
   .tf-submit-row {

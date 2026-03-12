@@ -182,5 +182,7 @@
     width: 100%;
     justify-content: flex-start;
     white-space: normal;
+    padding: 12px var(--spacing-lg);
+    font-size: var(--font-size-sm);
   }
 }

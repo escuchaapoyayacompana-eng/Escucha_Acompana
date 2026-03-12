@@ -167,11 +167,14 @@
 /* Phones (≤ 640px) */
 @media (max-width: 640px) {
   .flip-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--spacing-md);
+    max-width: 320px;
+    margin-inline: auto;
+    padding-bottom: 60px; /* Safe space for last card */
   }
   .flip-card {
-    height: 200px;
+    height: 180px;
   }
   .flip-card__emoji {
     font-size: 2.2rem;

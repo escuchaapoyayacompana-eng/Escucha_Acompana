@@ -510,20 +510,22 @@
 
   .game-sentence-wrap {
     font-size: var(--font-size-sm);
-    line-height: 2.6;
+    line-height: 2.8; /* Slightly more height for touch targets */
     padding: var(--spacing-md);
     word-break: break-word;
+    border-left-width: 3px;
   }
 
   .game-sentence-label {
     font-size: var(--font-size-xs);
+    justify-content: center; /* Center label on mobile */
   }
 
   .drop-zone {
-    min-width: 80px;
-    height: 32px;
+    min-width: 90px;
+    height: 34px;
     font-size: var(--font-size-sm);
-    margin: 0 2px;
+    margin: 4px 2px;
   }
 
   .drag-token {

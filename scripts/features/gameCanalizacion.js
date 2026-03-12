@@ -106,7 +106,8 @@ export function initGameCanalizacion() {
       Object.assign(body.style, {
         flex:      "1 1 auto",
         overflowY: "auto",
-        padding:   isMobile ? "1rem" : "1.5rem 2rem",
+        padding:   isMobile ? "1rem 1rem 5rem 1rem" : "1.5rem 2rem",
+        WebkitOverflowScrolling: "touch",
       });
     }
   }
@@ -263,3 +264,4 @@ function showFlipCompletion() {
     renderFlipGame();
   });
 }
+

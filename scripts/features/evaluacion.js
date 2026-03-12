@@ -90,7 +90,7 @@ export function initEvaluacionModal() {
           </div>
         </div>
 
-        <div style="text-align: center; margin-top: var(--spacing-2xl);">
+        <div class="evaluacion-actions">
           <button type="submit" class="button button--primary button--lg" id="eval-submit-btn">
             Enviar respuestas
             <span class="button__icon">✉️</span>
@@ -246,7 +246,7 @@ export function initEvaluacionModal() {
       flexDirection: "column",
       margin:        isMobile ? "auto auto 0 auto" : "auto",
       background:    "var(--color-background, #fff9f0)",
-      overflow:      "hidden",
+      overflow:      "hidden", // Back to hidden for panel
       boxSizing:     "border-box",
     });
     const body = panel.querySelector(".game-modal__body");
@@ -254,7 +254,8 @@ export function initEvaluacionModal() {
       Object.assign(body.style, {
         flex:      "1 1 auto",
         overflowY: "auto",
-        padding:   isMobile ? "1rem" : "1.5rem",
+        padding:   isMobile ? "1rem 1rem 5.5rem 1rem" : "1.5rem",
+        WebkitOverflowScrolling: "touch",
       });
     }
   }
@@ -337,3 +338,4 @@ function initAccordion(root) {
     });
   });
 }
+
