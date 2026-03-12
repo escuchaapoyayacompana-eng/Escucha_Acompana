@@ -86,50 +86,7 @@ export function initGameQueNoHacer() {
     document.body.appendChild(cnModal);
   }
 
-  const isMobile = window.innerWidth < 640;
-
-  Object.assign(cnModal.style, {
-    display:        "flex",
-    position:       "fixed",
-    inset:          "0",
-    top: "0", left: "0", right: "0", bottom: "0",
-    width:          "100vw",
-    height:         "100vh",
-    zIndex:         "99999",
-    background:     "rgba(61, 40, 18, 0.88)",
-    backdropFilter: "blur(6px)",
-    alignItems:     isMobile ? "flex-end" : "center",
-    justifyContent: "center",
-    padding:        "0",
-    boxSizing:      "border-box",
-    overflow:       "hidden",
-    opacity:        "0",
-    transition:     "opacity 300ms ease",
-  });
-
-  const panel = cnModal.querySelector(".game-modal__panel");
-  if (panel) {
-    Object.assign(panel.style, {
-      width:         isMobile ? "100%" : "min(1140px, 95vw)",
-      maxHeight:     isMobile ? "96vh" : "95vh",
-      borderRadius:  isMobile ? "20px 20px 0 0" : "20px",
-      display:       "flex",
-      flexDirection: "column",
-      margin:        isMobile ? "auto auto 0 auto" : "auto",
-      background:    "var(--color-background, #fff9f0)",
-      overflow:      "hidden",
-      boxSizing:     "border-box",
-    });
-    const body = panel.querySelector(".game-modal__body");
-    if (body) {
-      Object.assign(body.style, {
-        flex:      "1 1 auto",
-        overflowY: "auto",
-        padding:   isMobile ? "1rem" : "1.5rem 2rem",
-      });
-    }
-  }
-
+  cnModal.classList.add("game-modal--visible");
   cnModal.removeAttribute("hidden");
 
   // Lock scroll without jumping
@@ -140,9 +97,7 @@ export function initGameQueNoHacer() {
   document.body.style.top       = `-${scrollY}px`;
   document.body.style.width     = "100%";
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => { cnModal.style.opacity = "1"; });
-  });
+  cnModal.classList.add("game-modal--visible");
 
   const closeBtn = cnModal.querySelector(".game-modal__close");
   if (closeBtn) closeBtn.onclick = closeCnModal;
@@ -158,7 +113,7 @@ export function initGameQueNoHacer() {
    CLOSE
 ───────────────────────────────── */
 function closeCnModal() {
-  cnModal.style.opacity = "0";
+  cnModal.classList.remove("game-modal--visible");
   const savedScroll = parseInt(document.body.dataset.scrollY || "0");
   document.body.style.overflow  = "";
   document.body.style.position  = "";

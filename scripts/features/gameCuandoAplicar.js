@@ -51,52 +51,7 @@ export function initGameCuandoAplicar() {
     document.body.appendChild(qModal);
   }
 
-  const isMobile = window.innerWidth < 640;
-
-  // Force overlay inline
-  Object.assign(qModal.style, {
-    display:        "flex",
-    position:       "fixed",
-    inset:          "0",
-    top:            "0", left: "0", right: "0", bottom: "0",
-    width:          "100vw",
-    height:         "100vh",
-    zIndex:         "99999",
-    background:     "rgba(61, 40, 18, 0.88)",
-    backdropFilter: "blur(6px)",
-    alignItems:     isMobile ? "flex-end" : "center",
-    justifyContent: "center",
-    padding:        "0",
-    boxSizing:      "border-box",
-    overflow:       "hidden",
-    opacity:        "0",
-    transition:     "opacity 300ms ease",
-  });
-
-  // Size the panel
-  const panel = qModal.querySelector(".game-modal__panel");
-  if (panel) {
-    Object.assign(panel.style, {
-      width:         isMobile ? "100%" : "min(1140px, 95vw)",
-      maxHeight:     isMobile ? "96vh" : "95vh",
-      borderRadius:  isMobile ? "20px 20px 0 0" : "20px",
-      display:       "flex",
-      flexDirection: "column",
-      margin:        isMobile ? "auto auto 0 auto" : "auto",
-      background:    "var(--color-background, #fff9f0)",
-      overflow:      "hidden",
-      boxSizing:     "border-box",
-    });
-    const body = panel.querySelector(".game-modal__body");
-    if (body) {
-      Object.assign(body.style, {
-        flex:      "1 1 auto",
-        overflowY: "auto",
-        padding:    isMobile ? "1rem" : "1.5rem 2rem",
-      });
-    }
-  }
-
+  qModal.classList.add("game-modal--visible");
   qModal.removeAttribute("hidden");
   // Lock scroll without jumping
   const scrollY = window.scrollY;
@@ -106,9 +61,7 @@ export function initGameCuandoAplicar() {
   document.body.style.top = `-${scrollY}px`;
   document.body.style.width = "100%";
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => { qModal.style.opacity = "1"; });
-  });
+  qModal.classList.add("game-modal--visible");
 
   // Close handlers
   const closeBtn = qModal.querySelector(".game-modal__close");
@@ -125,7 +78,7 @@ export function initGameCuandoAplicar() {
    CLOSE
 ───────────────────────────────── */
 function closeQuizModal() {
-  qModal.style.opacity = "0";
+  qModal.classList.remove("game-modal--visible");
   // Restore scroll without jumping
   const savedScroll = parseInt(document.body.dataset.scrollY || "0");
   document.body.style.overflow = "";
